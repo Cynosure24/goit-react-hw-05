@@ -1,8 +1,8 @@
 import { VscArrowLeft } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
-import css from './BackToLink.module.css'
+import css from './NavLink.module.css'
 
-export const BackToLink = ({to, children}) => {
+export const NavLink = ({to, children}) => {
   return (
     <div className={css.container}>
       <Link className={css.link} to={to}>
