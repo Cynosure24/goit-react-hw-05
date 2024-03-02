@@ -39,7 +39,7 @@ export default function HomePage() {
     <div>
       {loader && <Loader />}
       {error && <ErrorMassage />}
-      <h1 className={css.tittle}>Trending movies today</h1>
+      <h1 className={css.tittle}>Trending today</h1>
       {trending.length > 0 && (
         <ul >
           {trending.map(trending => (
