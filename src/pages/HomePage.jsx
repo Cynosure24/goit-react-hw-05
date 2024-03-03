@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { fetchTrending } from '../Components/Api/Api';
+import { fetchTrending } from '../components/Api/Api';
 import { Link, useLocation } from 'react-router-dom';
-import { Loader } from '../Components/Loader/Loader';
-import { ErrorMassage } from '../Components/ErrorMassage/ErrorMassage'
+import { Loader } from '../components/Loader/Loader';
+import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage'
 import css from './HomePage.module.css'
 
 
