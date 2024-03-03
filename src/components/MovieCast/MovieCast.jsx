@@ -1,8 +1,8 @@
 import { fetchMovieCast } from '../Api/Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader } from '../../Components/Loader/Loader';
-import { ErrorMassage } from '../../Components/ErrorMassage/ErrorMassage';
+import { Loader } from '../../components/Loader/Loader';
+import { ErrorMassage } from '../../components/ErrorMassage/ErrorMassage';
 import css from './MovieCast.module.css';
 
 const MovieCast = () => {

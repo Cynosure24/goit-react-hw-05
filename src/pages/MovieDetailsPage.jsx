@@ -2,10 +2,10 @@ import { useEffect, useState, useRef } from 'react';
 import { Suspense } from 'react';
 
 import { useParams, Link, Outlet, useLocation} from 'react-router-dom';
-import { fetchMovieDetails } from '../Components/Api/Api'
-import { Loader } from '../Components/Loader/Loader';
-import { ErrorMassage } from '../Components/ErrorMassage/ErrorMassage';
-import { NavLink } from '../Components/NavLink/NavLink';
+import { fetchMovieDetails } from '../components/Api/Api'
+import { Loader } from '../components/Loader/Loader';
+import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import { NavLink } from '../components/NavLink/NavLink';
 import css from './MovieDetailsPage.module.css';
 
 export default function MovieDetailsPage() {
