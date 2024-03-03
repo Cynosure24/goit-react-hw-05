@@ -6,8 +6,8 @@ const HomePage = lazy(() => import('../../pages/HomePage.jsx'));
 const MovieDetailsPage = lazy(() => import('../../pages/MovieDetailsPage.jsx'));
 const MoviesPage = lazy(() => import('../../pages/MoviesPage.jsx'));
 const NotFoundPage = lazy(() => import('../../pages/NotFoundPage.jsx'));
-const MovieCast = lazy(() => import('../../components/MovieCast/MovieCast.jsx'));
-const MovieReviews = lazy(() => import('../../components/MovieReviews/MovieReviews.jsx'));
+const MovieCast = lazy(() => import('../MovieCast/MovieCast.jsx'));
+const MovieReviews = lazy(() => import('../MovieReviews/MovieReviews.jsx'));
 
 export const App = () => {
   return (
