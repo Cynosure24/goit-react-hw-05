@@ -2,7 +2,7 @@ import { fetchMovieReviews } from '../Api/Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../Components/Loader/Loader';
-import { ErrorMassage } from '../Components/ErrorMassage/ErrorMassage';
+import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
 import css from './MovieReviews.module.css';
 
 const MovieReviews = () => {
