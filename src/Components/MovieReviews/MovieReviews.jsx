@@ -1,8 +1,8 @@
-import { fetchMovieReviews } from '../Api/api';
+import { fetchMovieReviews } from '../Components/Api/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader } from '../Loader/Loader';
-import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
+import { Loader } from '../Components/Loader/Loader';
+import { ErrorMassage } from '../Components/ErrorMassage/ErrorMassage';
 import css from './MovieReviews.module.css';
 
 const MovieReviews = () => {

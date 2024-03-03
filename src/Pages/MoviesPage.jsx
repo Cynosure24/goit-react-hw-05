@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { fetchMovieSearch } from '../components/Api/api'
+import { fetchMovieSearch } from '../Components/Api/api'
 import { SearchForm } from "../components/SearchForm/SearchForm";
-import { Loader } from '../components/Loader/Loader';
-import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import { Loader } from '../Components/Loader/Loader';
+import { ErrorMassage } from '../Components/ErrorMassage/ErrorMassage';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function MoviesPage() {
