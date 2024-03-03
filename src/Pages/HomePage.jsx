@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchTrending } from '../Components/Api/api';
+import { fetchTrending } from '../Components/Api/Api';
 import { Link, useLocation } from 'react-router-dom';
 import { Loader } from '../Components/Loader/Loader';
 import { ErrorMassage } from '../Components/ErrorMassage/ErrorMassage'

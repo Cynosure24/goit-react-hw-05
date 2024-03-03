@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Suspense } from 'react';
 
 import { useParams, Link, Outlet, useLocation} from 'react-router-dom';
-import { fetchMovieDetails } from '../Components/Api/api'
+import { fetchMovieDetails } from '../Components/Api/Api'
 import { Loader } from '../Components/Loader/Loader';
 import { ErrorMassage } from '../Components/ErrorMassage/ErrorMassage';
 import { NavLink } from '../Components/NavLink/NavLink';
