@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { Navigation } from '../Navigation/Navigation.jsx';
+import { Navigation } from '../../components/Navigation/Navigation.jsx';
 
-const HomePage = lazy(() => import('../../Pages/HomePage.jsx'));
-const MovieDetailsPage = lazy(() => import('../../Pages/MovieDetailsPage.jsx'));
-const MoviesPage = lazy(() => import('../../Pages/MoviesPage.jsx'));
-const NotFoundPage = lazy(() => import('../../Pages/NotFoundPage.jsx'));
-const MovieCast = lazy(() => import('../MovieCast/MovieCast.jsx'));
-const MovieReviews = lazy(() => import('../MovieReviews/MovieReviews.jsx'));
+const HomePage = lazy(() => import('../../pages/HomePage.jsx'));
+const MovieDetailsPage = lazy(() => import('../../pages/MovieDetailsPage.jsx'));
+const MoviesPage = lazy(() => import('../../pages/MoviesPage.jsx'));
+const NotFoundPage = lazy(() => import('../../pages/NotFoundPage.jsx'));
+const MovieCast = lazy(() => import('../../components/MovieCast/MovieCast.jsx'));
+const MovieReviews = lazy(() => import('../../components/MovieReviews/MovieReviews.jsx'));
 
 export const App = () => {
   return (
