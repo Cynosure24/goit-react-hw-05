@@ -15,7 +15,7 @@
 
 a {
   font-weight: 500;
- color: #30ec5f;
+ color: #08160b;
   text-decoration: inherit;
 }
 
@@ -69,7 +69,7 @@ button:focus-visible {
   :root {
     
     color: #0aebeb;
-    background-color: #857a6295;
+    background-color: #423d3195;
   }
   button {
     background-color: #f9f9f9;
