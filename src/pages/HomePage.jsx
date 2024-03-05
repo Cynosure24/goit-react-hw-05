@@ -3,6 +3,7 @@ import { fetchTrending } from '../components/Api/Api';
 import { Link, useLocation } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader';
 import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage'
+import { MovieList } from "../components/MovieList/MovieList";
 import css from './HomePage.module.css'
 
 
@@ -40,7 +41,7 @@ export default function HomePage() {
       {loader && <Loader />}
       {error && <ErrorMessage />}
       <h1 className={css.tittle}>Trending today</h1>
-      {trending.length > 0 && (
+      {trending.length > 0 && <MovieList movies={trending} />} 
         <ul >
           {trending.map(trending => (
             <li key={trending.id} className={css.list}>
@@ -50,7 +51,6 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
-      )}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { fetchMovieSearch } from '../components/Api/Api'
 import { SearchForm } from "../components/SearchForm/SearchForm";
 import { Loader } from '../components/Loader/Loader';
 import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage';
+import { MovieList } from "../components/MovieList/MovieList";
 import { Link, useLocation } from 'react-router-dom';
 
 export default function MoviesPage() {
@@ -43,6 +44,7 @@ useEffect(() => {
   return (
     <div>
       <SearchForm onSearch={searchMovie} />
+      <MovieList movies={searchMovies} />
       {loader && <Loader />}
       {error && <ErrorMessage />}
       {searchMovies.length > 0 && (
