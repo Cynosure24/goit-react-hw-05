@@ -1,18 +1,24 @@
-import { MutatingDots } from 'react-loader-spinner';
+import { ThreeDots } from "react-loader-spinner";
 
-export const Loader = () => {
-    return (<div>
-        <MutatingDots
-  visible={true}
-  height="100"
-  width="100"
-  color="#4fa94d"
-  secondaryColor="#4fa94d"
-  radius="12.5"
-  ariaLabel="mutating-dots-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  />
+export default function Loader() {
+  const style = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+  return (
+    <div style={style}>
+      <ThreeDots
+        visible={true}
+        height="80"
+        width="80"
+        color="#eee"
+        radius="9"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
     </div>
-    )
+  );
 }

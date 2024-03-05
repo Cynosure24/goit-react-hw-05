@@ -1,52 +1,52 @@
-import { fetchMovieReviews } from '../Api/Api';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Loader } from '../Loader/Loader';
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
-import css from './MovieReviews.module.css';
+import { useEffect, useState } from "react";
+import { getReviews } from "../../apiService/api";
+import Loader from "../Loader/Loader";
+import { useParams } from "react-router-dom";
+import css from "./MovieReviews.module.css";
 
-const MovieReviews = () => {
+export default function MovieReviews() {
   const { movieId } = useParams();
-  const [movieReviewsDetails, setMovieReviewsDetails] = useState([]);
-  const [loader, setLoader] = useState(false);
+  const [reviews, setReviews] = useState(null);
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchReviewsDetails = async () => {
+    setIsLoading(true);
+
+    async function fetchData() {
       try {
-        setLoader(true);
-        const fetchedReviews = await fetchMovieReviews(movieId);
-        setMovieReviewsDetails(fetchedReviews.results || []);
+        const fetchedReviews = await getReviews(movieId);
+        setReviews(fetchedReviews.results);
       } catch (error) {
         setError(true);
       } finally {
-        setLoader(false);
+        setIsLoading(false);
       }
-    };
-    fetchReviewsDetails();
+    }
+    fetchData();
   }, [movieId]);
-
   return (
     <div className={css.container}>
-      {loader && <Loader />}
-      {error && <ErrorMessage />}
-      {!loader && !error && movieReviewsDetails.length === 0 && (
-        <p>No reviews found.</p>
-      )}
-      {movieReviewsDetails.length > 0 && (
-        <div>
-          <ul>
-            {movieReviewsDetails.map(review => (
-              <li className={css.item} key={review.id}>
-                <h2 className={css.title}> {review.author}</h2>
-                <p>{review.content}</p>
-              </li>
-            ))}
-          </ul>
+      {isLoading && <Loader />}
+      {error ? (
+        <p>Error fetching data</p>
+      ) : (
+        <div className={css.card}>
+          {reviews && reviews.length > 0 ? (
+            <ul className={css.list}>
+              {reviews &&
+                reviews.map(({ id, author, content }) => (
+                  <li key={id} className={css.item}>
+                    <p className={css.author}>{author}</p>
+                    <p className={css.text}>{content}</p>
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            <p>No reviews yet</p>
+          )}
         </div>
       )}
     </div>
   );
-};
-
-export default MovieReviews;
+}

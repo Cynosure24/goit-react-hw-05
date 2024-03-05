@@ -1,21 +1,24 @@
+.wrapper {
+  background-color: #eee;
+  padding: 15px 70px;
+  margin-bottom: 20px;
+}
 .nav {
-  padding-left: 20px;
-  padding-bottom: 10px;
   display: flex;
   gap: 20px;
-  box-shadow: 0px 5px 5px -5px rgba(207, 207, 207, 0.75);
 }
-
 .link {
-  color: black;
-  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  display: block;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s;
 }
-
 .link:hover {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
+  border-color: #bca1eb;
+  color: #bca1eb;
 }
-
 .active {
-  color: rgb(8, 243, 212);
+  color: #bca1eb;
 }

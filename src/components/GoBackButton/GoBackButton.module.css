@@ -1,0 +1,19 @@
+.button {
+  border-radius: 5px;
+  border: 1px solid #eee;
+  padding: 10px 15px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s;
+  margin-bottom: 20px;
+}
+.button:hover {
+  border-color: #6dddd7;
+  color: #6dddd7;
+}
+.icon {
+  width: 15px;
+}
+.container {
+  padding: 0 70px;
+}

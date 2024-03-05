@@ -1,65 +1,87 @@
-import { fetchMovieCast } from '../Api/Api';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Loader } from '../../components/Loader/Loader';
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
-import css from './MovieCast.module.css';
+import { useEffect, useState } from "react";
+import { getCast } from "../../apiService/api";
+import Loader from "../Loader/Loader";
+import { useParams } from "react-router-dom";
+import css from "./MovieCast.module.css";
 
-const MovieCast = () => {
-    const { movieId } = useParams();
-    const [movieCastDetails, setMovieCastDetails] = useState([]); 
-    const [loader, setLoader] = useState(false);
-    const [error, setError] = useState(false);
+export default function MovieCast() {
+  const { movieId } = useParams();
 
-    useEffect(() => {
-        const fetchCastDetails = async () => {
-            try {
-                setLoader(true);
-                const fetchedCast = await fetchMovieCast(movieId);
-                if (fetchedCast && fetchedCast.cast) {
-                    setMovieCastDetails(fetchedCast.cast);
-                } else {
-                    setMovieCastDetails([]);
-                }
-            } catch (error) {
-                if (error.code !== 'ERR_CANCELLED') {
-                    console.log(error);
-                    setError(true);
-                }
-            } finally {
-                setLoader(false);
-            }
-        };
+  const [cast, setCast] = useState(null);
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-        fetchCastDetails();
-    }, [movieId]);
+  useEffect(() => {
+    setIsLoading(true);
 
-    return (
+    async function fetchData() {
+      try {
+        const fetchedCast = await getCast(movieId);
+        setCast(fetchedCast.cast);
+      } catch (error) {
+        setError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, [movieId]);
+
+  const defaultImg =
+    "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+
+  return (
+    <div className={css.container}>
+      {isLoading && <Loader />}
+      {error ? (
+        <p>Error fetching data</p>
+      ) : (
         <div>
-            {loader && <Loader />}
-            {error && <ErrorMessage />}
-            {!loader && !error && movieCastDetails.length === 0 && (
-                <p>No cast details available.</p>
-            )}
-            {movieCastDetails && movieCastDetails.length > 0 && (
-                <div className={css.container}>
-                    <ul className={css.list}>
-                        {movieCastDetails.map(actor => (
-                            <li key={actor.id} className={css.item}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                                    alt={actor.name}
-                                    className={css.img}
-                                />
-                                <h4>{actor.name}</h4>
-                                <p>Character {actor.character}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+          {cast && cast.length > 0 ? (
+            <ul className={css.list}>
+              {cast.map(({ id, name, profile_path, character }) => (
+                <li key={id} className={css.card}>
+                  <img
+                    src={
+                      profile_path
+                        ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                        : defaultImg
+                    }
+                    alt={name}
+                    width={150}
+                  />
+                  <div className={css.textWrap}>
+                    <p className={css.name}>{name}</p>
+                    <p className={css.role}>
+                      {character ? "as " : ""}
+                      {character}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No data yet</p>
+          )}
         </div>
-    );
-};
+      )}
+    </div>
+  );
+}
 
-export default MovieCast;
+// "id": 550,
+// "cast": [
+//   {
+//     "adult": false,
+//     "gender": 2,
+//     "id": 819,
+//     "known_for_department": "Acting",
+//     "name": "Edward Norton",
+//     "original_name": "Edward Norton",
+//     "popularity": 26.99,
+//     "profile_path": "/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg",
+//     "cast_id": 4,
+//     "character": "The Narrator",
+//     "credit_id": "52fe4250c3a36847f80149f3",
+//     "order": 0
+//   },

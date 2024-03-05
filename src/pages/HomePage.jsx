@@ -1,56 +1,37 @@
+import MoviesList from "../components/MovieList/MovieList";
+import Loader from "../components/Loader/Loader";
 import { useEffect, useState } from 'react';
-import { fetchTrending } from '../components/Api/Api';
-import { Link, useLocation } from 'react-router-dom';
-import { Loader } from '../components/Loader/Loader';
-import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage'
-import { MovieList } from "../components/MovieList/MovieList";
-import css from './HomePage.module.css'
-
+import { getTrending } from "../apiService/api";
+import { useLocation } from "react-router-dom";
+import css from "../components/MovieList/MovieList.module.css";
 
 export default function HomePage() {
-
   const [trending, setTrending] = useState([]);
-  const location = useLocation();
-  const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
-  
-  useEffect(() => {
-    const controller = new AbortController();
+  const [isLoading, setIsLoading] = useState(false);
 
-    const fetchData = async () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsLoading(true);
+    async function fetchData() {
       try {
-        const data = await fetchTrending({ signal: controller.signal });
-        setLoader(true);
-        setTrending(data.results);
+        const fetchedTrending = await getTrending();
+        setTrending(fetchedTrending.results);
       } catch (error) {
-        if (error.code !== 'ERR_CANCELLED') {
-          console.log(error);
-          setError(true);
-        }       
+        setError(true);
       } finally {
-        setLoader(false);
+        setIsLoading(false);
       }
-    };
-    fetchData();
-    return () => {
-      controller.abort();
     }
+    fetchData();
   }, []);
+
   return (
     <div>
-      {loader && <Loader />}
-      {error && <ErrorMessage />}
-      <h1 className={css.tittle}>Trending today</h1>
-      {trending.length > 0 && <MovieList movies={trending} />} 
-        <ul >
-          {trending.map(trending => (
-            <li key={trending.id} className={css.list}>
-              <Link to={`/movies/${trending.id}`} state={{ from: location }}>
-                <h2>{trending.title}</h2>
-              </Link>        
-            </li>
-          ))}
-        </ul>
+      <h1 className={css.title}>Trending today</h1>
+      <MoviesList error={error} movies={trending} location={location} />
+      {isLoading && <Loader />}
     </div>
   );
 }

@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.textWrap {
+  padding-left: 50px;
+  width: 600px;
+}
+.title {
+  margin-bottom: 20px;
+}
+.text {
+  font-weight: 600;
+}
+.genres {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+.subtitle {
+  font-size: 20px;
+}
+.container {
+  padding: 0 70px;
+}

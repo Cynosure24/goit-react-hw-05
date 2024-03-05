@@ -1,0 +1,16 @@
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.list {
+  margin-bottom: 20px;
+}
+.link:hover {
+  color: #6dddd7;
+}
+.active {
+  color: #6dddd7;
+}
+.container {
+  padding: 0 70px;
+}
