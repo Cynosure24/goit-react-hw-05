@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { useParams, Link, Outlet, useLocation} from 'react-router-dom';
 import { fetchMovieDetails } from '../components/Api/Api'
 import { Loader } from '../components/Loader/Loader';
-import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import { ErrorMassage } from '../components/ErrorMessage/ErrorMessage';
 import { NavLink } from '../components/NavLink/NavLink';
 import css from './MovieDetailsPage.module.css';
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchTrending } from '../components/Api/Api';
 import { Link, useLocation } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader';
-import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage'
+import { ErrorMassage } from '../components/ErrorMessage/ErrorMessage'
 import css from './HomePage.module.css'
 
 

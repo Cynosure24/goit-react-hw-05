@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchMovieSearch } from '../components/Api/Api'
 import { SearchForm } from "../components/SearchForm/SearchForm";
 import { Loader } from '../components/Loader/Loader';
-import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import { ErrorMassage } from '../components/ErrorMessage/ErrorMessage';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function MoviesPage() {
