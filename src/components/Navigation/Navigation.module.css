@@ -16,9 +16,9 @@
   transition: border-color 0.25s, color 0.25s;
 }
 .link:hover {
-  border-color: #bca1eb;
-  color: #bca1eb;
+  border-color: #6dddd7;
+  color: #6dddd7;
 }
 .active {
-  color: #bca1eb;
+  color: #6dddd7;
 }
