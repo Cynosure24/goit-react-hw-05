@@ -2,7 +2,7 @@ import { fetchMovieReviews } from '../Api/Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
-import { ErrorMassage } from '../ErrorMessage/ErrorMessage';
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import css from './MovieReviews.module.css';
 
 const MovieReviews = () => {
@@ -29,7 +29,7 @@ const MovieReviews = () => {
   return (
     <div className={css.container}>
       {loader && <Loader />}
-      {error && <ErrorMassage />}
+      {error && <ErrorMessage />}
       {!loader && !error && movieReviewsDetails.length === 0 && (
         <p>No reviews found.</p>
       )}

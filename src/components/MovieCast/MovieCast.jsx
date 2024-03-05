@@ -2,7 +2,7 @@ import { fetchMovieCast } from '../Api/Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
-import { ErrorMassage } from '../ErrorMessage/ErrorMessage';
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import css from './MovieCast.module.css';
 
 const MovieCast = () => {
@@ -37,7 +37,7 @@ const MovieCast = () => {
     return (
         <div>
             {loader && <Loader />}
-            {error && <ErrorMassage />}
+            {error && <ErrorMessage />}
             {!loader && !error && movieCastDetails.length === 0 && (
                 <p>No cast details available.</p>
             )}
