@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import css from "./MoviesList.module.css";
+import css from "./MovieList.module.css";
 
 export default function MoviesList({ error, movies, location }) {
   const defaultImg =
