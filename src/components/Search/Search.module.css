@@ -28,6 +28,6 @@ input:hover {
   transition: background-color 0.25s, color 0.25s;
 }
 .button:hover {
-  color: #eee;
-  background-color: 6dddd7;
+  color: #049c83;
+  background-color: #6dddd7;
 }
